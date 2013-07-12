@@ -268,6 +268,7 @@ Exp Manager Plugin.</description>
           <groupId>net.syamn</groupId>
           <artifactId>SakuraLib</artifactId>
           <version>1.6.1-0.1</version>
+          <scope>provided</scope>
       </dependency>
 
       <!-- Test Depends -->

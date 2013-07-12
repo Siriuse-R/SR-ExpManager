@@ -1,0 +1,8 @@
+name: SR-ExpManager
+version: version-number-unknown
+description: SR-ExpManager
+authors: [SiriuseR]
+website: http://www.siriuser.net/
+main: net.siriuser.SRExpManager.SRExpManager
+commands:
+permissions:

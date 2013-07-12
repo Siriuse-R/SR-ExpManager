@@ -1,0 +1,4 @@
+DefMode: "true"
+MsgString: "%CMSG% (%OMSG%)"
+
+ConfigVersion: 1
