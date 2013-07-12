@@ -16,6 +16,7 @@ public class SRExpManager extends JavaPlugin {
 
      // イベントリスナー登録
      PluginManager pm = getServer().getPluginManager();
+     pm.registerEvents(new ExpListener(this), this);
 
      PluginDescriptionFile pdfFile = this.getDescription();
      log.info("[" + pdfFile.getName() + "] version " + pdfFile.getVersion() + " is enabled!");
