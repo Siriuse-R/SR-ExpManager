@@ -2,6 +2,7 @@ name: SR-ExpManager
 version: version-number-unknown
 description: SR-ExpManager
 authors: [SiriuseR]
+depend: [SRCoreLib]
 website: http://www.siriuser.net/
 main: net.siriuser.SRExpManager.SRExpManager
 commands:

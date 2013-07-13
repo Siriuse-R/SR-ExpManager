@@ -14,14 +14,6 @@ public class SRExpManager extends JavaPlugin {
     @Override
     public void onEnable() {
 
-
-        if (!this.getServer().getOnlineMode()) {
-            log.warning("This Server is OnlineMode = false!");
-            log.warning("############### The Shutting down the server ###############");
-            this.getServer().shutdown();
-            return;
-        }
-
         // イベントリスナー登録
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new ExpListener(this), this);
