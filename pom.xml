@@ -1,6 +1,6 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.siriuser.srexpmanager</groupId>
+    <groupId>net.siriuser</groupId>
     <artifactId>SR-ExpManager</artifactId>
     <version>0.0.1-SNAPSHOT</version>
     <name>SR-ExpManager</name>
@@ -242,6 +242,14 @@ Exp Manager Plugin.</description>
           <scope>provided</scope>
       </dependency>
 
+      <!-- SR-CoreLib Dependency -->
+      <dependency>
+          <groupId>net.siriuser</groupId>
+          <artifactId>SR-CoreLib</artifactId>
+          <version>0.0.1-SNAPSHOT</version>
+          <scope>provided</scope>
+      </dependency>
+
       <!-- SakuraUtils Dependency -->
       <dependency>
           <groupId>net.syamn</groupId>
@@ -273,5 +281,5 @@ Exp Manager Plugin.</description>
           </properties>
       </profile>
   </profiles>
-  <url>http://www.dejiplus.net/</url>
+  <url>http://siriuser.net/</url>
 </project>
