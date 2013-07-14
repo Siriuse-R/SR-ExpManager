@@ -18,6 +18,12 @@ public class SRExpManager extends JavaPlugin {
         PluginManager pm = getServer().getPluginManager();
         pm.registerEvents(new ExpListener(this), this);
 
+        if (getServer().getPluginManager().isPluginEnabled("SR-CoreLib")) {
+            log.warning(logPrefix + "SR-CoreLib is not enabled!");
+            pm.disablePlugin(this);
+            return;
+        }
+
         PluginDescriptionFile pdfFile = this.getDescription();
         log.info("[" + pdfFile.getName() + "] version " + pdfFile.getVersion() + " is enabled!");
     }
