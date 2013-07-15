@@ -100,6 +100,7 @@ public class ExpListener implements Listener {
         if (dropExp != 0) {
             player.giveExp(dropExp);
             player.sendMessage(Util.coloring("&a[Exp] &2" + event.getBlock().getType().toString() + "&eを破壊し" + dropExp + "経験値を獲得。"));
+            event.setExpToDrop(0);
         }
     }
 
@@ -115,6 +116,7 @@ public class ExpListener implements Listener {
         if (dropExp != 0) {
             player.giveExp(dropExp);
             player.sendMessage(Util.coloring("&a[Exp] &2" + "&eかまどから" + dropExp + "経験値を獲得。"));
+            event.setExpToDrop(0);
         }
     }
 }
