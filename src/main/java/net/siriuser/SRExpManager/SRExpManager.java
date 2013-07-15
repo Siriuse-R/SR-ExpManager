@@ -1,6 +1,9 @@
 package net.siriuser.SRExpManager;
 
+import java.io.IOException;
 import java.util.logging.Logger;
+
+import net.syamn.utils.Metrics;
 
 import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
@@ -25,6 +28,8 @@ public class SRExpManager extends JavaPlugin {
             return;
         }
 
+        setupMetrics();
+
         PluginDescriptionFile pdfFile = this.getDescription();
         log.info("[" + pdfFile.getName() + "] version " + pdfFile.getVersion() + " is enabled!");
     }
@@ -35,5 +40,14 @@ public class SRExpManager extends JavaPlugin {
 
         PluginDescriptionFile pdfFile = this.getDescription();
         log.info("[" + pdfFile.getName() + "] version " + pdfFile.getVersion() + "is disabled!");
+    }
+
+    private void setupMetrics() {
+        try {
+            Metrics metrics = new Metrics(this);
+            metrics.start();
+        } catch (IOException e) {
+            log.warning(logPrefix);
+        }
     }
 }
