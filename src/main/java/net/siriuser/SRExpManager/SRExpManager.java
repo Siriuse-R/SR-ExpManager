@@ -14,8 +14,18 @@ public class SRExpManager extends JavaPlugin {
     public final static Logger log = Logger.getLogger("Minecraft");
     public final static String logPrefix = "[SREM] ";
 
+    private ConfigManager config;
+
     @Override
     public void onEnable() {
+
+        config = new ConfigManager(this);
+        try {
+            config.loadConfig(true);
+        } catch (Exception ex) {
+            log.warning(logPrefix + "an error occured while trying to load the config file.");
+            ex.printStackTrace();
+        }
 
         // イベントリスナー登録
         PluginManager pm = getServer().getPluginManager();
@@ -49,5 +59,9 @@ public class SRExpManager extends JavaPlugin {
         } catch (IOException e) {
             log.warning(logPrefix);
         }
+    }
+
+    public ConfigManager getConfigs() {
+        return config;
     }
 }
