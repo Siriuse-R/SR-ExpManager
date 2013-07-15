@@ -1,8 +1,5 @@
 package net.siriuser.SRExpManager;
 
-import java.util.HashMap;
-import java.util.Map;
-import java.util.UUID;
 import java.util.logging.Logger;
 
 import net.syamn.utils.Util;
@@ -26,15 +23,20 @@ public class ExpListener implements Listener {
 
     private final static Logger log = SRExpManager.log;
     private final static String logPrefix = SRExpManager.logPrefix;
+
     private final SRExpManager plugin;
-    private HashMap<UUID, Map<String, Long>> dragons;
+    private final ConfigManager config;
 
     public ExpListener (final SRExpManager plugin) {
         this.plugin = plugin;
+        this.config = plugin.getConfigs();
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void EntityGiveExp (final EntityDeathEvent event) {
+
+        if (!config.getBooleanConfig("DirectGiveExp.Entity")) return;
+
         final LivingEntity ent = event.getEntity();
         final int dropExp = event.getDroppedExp();
 
@@ -52,36 +54,47 @@ public class ExpListener implements Listener {
                 if (killer instanceof Player) {
                     Player killerP = (Player)killer;
 
-                    if (killerP.getGameMode().getValue() == 1) {
-                        return;
+                    if (config.getBooleanConfig("CreativeModeExp") && !(killerP.getGameMode().getValue() == 1)) {
+                        killerP.giveExp(dropExp);
+                        if (config.getBooleanConfig("UseExpMessage")) {
+                            killerP.sendMessage(Util.coloring(config.getStringConfig("Message.Entity")
+                                    .replace("%Entity%", ent.getType().getName())
+                                    .replace("%Exp%", String.valueOf(dropExp))));
+                        }
+
                     }
 
-                    killerP.giveExp(dropExp);
-                    killerP.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを倒し" + dropExp + "経験値を獲得。"));
                     event.setDroppedExp(0);
 
                 } else if (killer instanceof Wolf && ((Wolf) killer).isTamed()) {
                     Wolf killerW = (Wolf)killer;
                     Player player = (Player) killerW.getOwner();
 
-                    if (player.getGameMode().getValue() == 1) {
-                        return;
+                    if (config.getBooleanConfig("CreativeModeExp") && !(player.getGameMode().getValue() == 1)) {
+                        player.giveExp(dropExp + 5);
+                        if (config.getBooleanConfig("UseExpMessage")) {
+                            player.sendMessage(Util.coloring(config.getStringConfig("Message.Entity") + config.getStringConfig("Message.EntityWolf")
+                                    .replace("%Entity%", ent.getType().getName())
+                                    .replace("%Exp%", String.valueOf(dropExp))
+                                    ));
+                        }
                     }
 
-                    player.giveExp(dropExp + 5);
-                    player.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを狼が倒し" + dropExp + "経験値を獲得。&b (狼ボーナス: +5)"));
                     event.setDroppedExp(0);
 
                 } else if (killer instanceof Arrow) {
                     Arrow arrow = (Arrow)killer;
                     Player killerP = (Player)arrow.getShooter();
 
-                    if (killerP.getGameMode().getValue() == 1) {
-                        return;
+                    if (config.getBooleanConfig("CreativeModeExp") && !(killerP.getGameMode().getValue() == 1)) {
+                        killerP.giveExp(dropExp);
+                        if (config.getBooleanConfig("UseExpMessage")) {
+                            killerP.sendMessage(Util.coloring(config.getStringConfig("Message.Entity")
+                                    .replace("%Entity%", ent.getType().getName())
+                                    .replace("%Exp%", String.valueOf(dropExp))));
+                        }
                     }
 
-                    killerP.giveExp(dropExp);
-                    killerP.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを倒し" + dropExp + "経験値を獲得。"));
                     event.setDroppedExp(0);
                 }
             }
@@ -90,33 +103,40 @@ public class ExpListener implements Listener {
 
     @EventHandler(priority = EventPriority.HIGH)
     public void BlockBreakGiveExp (final BlockBreakEvent event) {
+
+        if (!config.getBooleanConfig("DirectGiveExp.Block")) return;
+
         final Player player = event.getPlayer();
         final int dropExp = event.getExpToDrop();
 
-        if (player.getGameMode().getValue() == 1) {
-            return;
+        if (config.getBooleanConfig("CreativeModeExp") && !(player.getGameMode().getValue() == 1) && dropExp != 0) {
+            player.giveExp(dropExp);
+            if (config.getBooleanConfig("UseExpMessage")) {
+                player.sendMessage(Util.coloring(config.getStringConfig("Message.Block")
+                        .replace("%Block%", event.getBlock().getType().toString())
+                        .replace("%Exp%", String.valueOf(dropExp))));
+            }
         }
 
-        if (dropExp != 0) {
-            player.giveExp(dropExp);
-            player.sendMessage(Util.coloring("&a[Exp] &2" + event.getBlock().getType().toString() + "&eを破壊し" + dropExp + "経験値を獲得。"));
-            event.setExpToDrop(0);
-        }
+        event.setExpToDrop(0);
     }
 
     @EventHandler(priority = EventPriority.HIGH)
     public void onFurnaceExtract(final FurnaceExtractEvent event) {
+
+        if (!config.getBooleanConfig("DirectGiveExp.Furnace")) return;
+
         final Player player = event.getPlayer();
         final int dropExp = event.getExpToDrop();
 
-        if (player.getGameMode().getValue() == 1) {
-            return;
+        if (config.getBooleanConfig("CreativeModeExp") && !(player.getGameMode().getValue() == 1) && dropExp != 0) {
+            player.giveExp(dropExp);
+            if (config.getBooleanConfig("UseExpMessage")) {
+                player.sendMessage(Util.coloring(config.getStringConfig("Message.Furnace")
+                        .replace("%Exp%", String.valueOf(dropExp))));
+            }
         }
 
-        if (dropExp != 0) {
-            player.giveExp(dropExp);
-            player.sendMessage(Util.coloring("&a[Exp] &2" + "&eかまどから" + dropExp + "経験値を獲得。"));
-            event.setExpToDrop(0);
-        }
+        event.setExpToDrop(0);
     }
 }

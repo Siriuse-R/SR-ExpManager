@@ -1,4 +1,16 @@
-DefMode: "true"
-MsgString: "%CMSG% (%OMSG%)"
+CreativeModeExp: true
+UseExpMessage: true
+
+DirectGiveExp:
+    Entity: true
+    Block: true
+    Furnace: true
+
+
+Message:
+    Entity: &a[Exp] &2%Entity%&eを倒し%Exp%経験値を獲得。
+    EntityWolf: &b(狼ボーナス: +5)
+    Block: &a[Exp] &2%Block%&eを破壊し%Exp%経験値を獲得。
+    Furnace: &a[Exp] &eかまどから%Exp%経験値を獲得。
 
 ConfigVersion: 1
