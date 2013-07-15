@@ -146,14 +146,14 @@ Exp Manager Plugin.</description>
                               <minimizeJar>true</minimizeJar>
                               <filters>
                                   <filter>
-                                      <artifact>net.syamn:syamn-lib</artifact>
+                                      <artifact>net.syamn:SakuraLib</artifact>
                                       <includes><include>**</include></includes>
                                   </filter>
                               </filters>
                               <relocations>
                                   <relocation>
                                       <pattern>net.syamn.utils</pattern>
-                                      <shadedPattern>net.syamn.dejiplus.utils</shadedPattern>
+                                      <shadedPattern>net.syamn.utils</shadedPattern>
                                   </relocation>
                               </relocations>
                           </configuration>
@@ -255,7 +255,6 @@ Exp Manager Plugin.</description>
           <groupId>net.syamn</groupId>
           <artifactId>SakuraLib</artifactId>
           <version>1.6.1-0.1</version>
-          <scope>provided</scope>
       </dependency>
 
       <!-- Test Depends -->
