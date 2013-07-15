@@ -52,6 +52,10 @@ public class ExpListener implements Listener {
                 if (killer instanceof Player) {
                     Player killerP = (Player)killer;
 
+                    if (killerP.getGameMode().getValue() == 1) {
+                        return;
+                    }
+
                     killerP.giveExp(dropExp);
                     killerP.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを倒し" + dropExp + "経験値を獲得。"));
                     event.setDroppedExp(0);
@@ -60,6 +64,10 @@ public class ExpListener implements Listener {
                     Wolf killerW = (Wolf)killer;
                     Player player = (Player) killerW.getOwner();
 
+                    if (player.getGameMode().getValue() == 1) {
+                        return;
+                    }
+
                     player.giveExp(dropExp + 5);
                     player.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを狼が倒し" + dropExp + "経験値を獲得。&b (狼ボーナス: +5)"));
                     event.setDroppedExp(0);
@@ -67,6 +75,10 @@ public class ExpListener implements Listener {
                 } else if (killer instanceof Arrow) {
                     Arrow arrow = (Arrow)killer;
                     Player killerP = (Player)arrow.getShooter();
+
+                    if (killerP.getGameMode().getValue() == 1) {
+                        return;
+                    }
 
                     killerP.giveExp(dropExp);
                     killerP.sendMessage(Util.coloring("&a[Exp] &2" + ent.getType().getName() + "&eを倒し" + dropExp + "経験値を獲得。"));
@@ -81,6 +93,10 @@ public class ExpListener implements Listener {
         final Player player = event.getPlayer();
         final int dropExp = event.getExpToDrop();
 
+        if (player.getGameMode().getValue() == 1) {
+            return;
+        }
+
         if (dropExp != 0) {
             player.giveExp(dropExp);
             player.sendMessage(Util.coloring("&a[Exp] &2" + event.getBlock().getType().toString() + "&eを破壊し" + dropExp + "経験値を獲得。"));
@@ -91,6 +107,10 @@ public class ExpListener implements Listener {
     public void onFurnaceExtract(final FurnaceExtractEvent event) {
         final Player player = event.getPlayer();
         final int dropExp = event.getExpToDrop();
+
+        if (player.getGameMode().getValue() == 1) {
+            return;
+        }
 
         if (dropExp != 0) {
             player.giveExp(dropExp);
