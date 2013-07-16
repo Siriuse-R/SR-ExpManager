@@ -4,6 +4,7 @@ import java.io.File;
 import java.util.logging.Logger;
 
 import net.syamn.utils.file.FileStructure;
+import net.tsuttsu305.util.JarUtil;
 
 import org.bukkit.configuration.file.FileConfiguration;
 
@@ -43,7 +44,8 @@ public class ConfigManager {
     public void copyConfig() {
         FileStructure.createDir(pluginDir);
         File file = new File(pluginDir, "config.yml");if (!file.exists()) {
-        FileStructure.extractResource("/config.yml", pluginDir, false, false, plugin);
+        //FileStructure.extractResource("/config.yml", pluginDir, false, false, plugin);
+            JarUtil.copyJarResource(plugin.getJarFile(), new File(pluginDir, "config.yml"), "config.yml");
             log.info(logPrefix + "config.yml is not found! Created default config.yml!");
         }
     }

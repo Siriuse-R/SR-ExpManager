@@ -1,3 +1,4 @@
+#this file is SJIS
 CreativeModeExp: true
 UseExpMessage: true
 
@@ -8,9 +9,9 @@ DirectGiveExp:
 
 
 Message:
-    Entity: &a[Exp] &2%Entity%&eã‚’å€’ã—%Exp%çµŒé¨“å€¤ã‚’ç²å¾—ã€‚
-    EntityWolf: &b(ç‹¼ãƒœãƒ¼ãƒŠã‚¹: +5)
-    Block: &a[Exp] &2%Block%&eã‚’ç ´å£Šã—%Exp%çµŒé¨“å€¤ã‚’ç²å¾—ã€‚
-    Furnace: &a[Exp] &eã‹ã¾ã©ã‹ã‚‰%Exp%çµŒé¨“å€¤ã‚’ç²å¾—ã€‚
+    Entity: "&a[Exp] &2%Entity%&e‚ğ“|‚µ%Exp%ŒoŒ±’l‚ğŠl“¾B"
+    EntityWolf: "&b(˜Tƒ{[ƒiƒX: +5)"
+    Block: "&a[Exp] &2%Block%&e‚ğ”j‰ó‚µ%Exp%ŒoŒ±’l‚ğŠl“¾B"
+    Furnace: "&a[Exp] &e‚©‚Ü‚Ç‚©‚ç%Exp%ŒoŒ±’l‚ğŠl“¾B"
 
 ConfigVersion: 1
