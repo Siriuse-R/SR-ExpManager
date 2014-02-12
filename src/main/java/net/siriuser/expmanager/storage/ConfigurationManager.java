@@ -57,6 +57,9 @@ public class ConfigurationManager {
         }
     }
 
+    public boolean getDirectExp() {
+        return config.getBoolean("DirectExp", true);
+    }
 
     public ConfigurationSection getBlockSection() {
         return config.getConfigurationSection("Block");
