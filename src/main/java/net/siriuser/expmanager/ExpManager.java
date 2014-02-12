@@ -2,7 +2,6 @@ package net.siriuser.expmanager;
 
 import net.siriuser.expmanager.listeners.BlockListener;
 import net.siriuser.expmanager.listeners.EntityListener;
-import net.siriuser.expmanager.listeners.PlayerListener;
 import net.syamn.utils.LogUtil;
 import net.syamn.utils.Metrics;
 import org.bukkit.plugin.PluginDescriptionFile;
