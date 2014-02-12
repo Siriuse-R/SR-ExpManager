@@ -3,7 +3,6 @@ package net.siriuser.expmanager.listeners;
 import net.siriuser.expmanager.ExpManager;
 import net.siriuser.expmanager.Helper;
 import net.siriuser.expmanager.storage.ConfigurationManager;
-import net.syamn.utils.LogUtil;
 import org.bukkit.entity.*;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;

@@ -3,15 +3,12 @@ package net.siriuser.expmanager.listeners;
 import net.siriuser.expmanager.ExpManager;
 import net.siriuser.expmanager.Helper;
 import net.siriuser.expmanager.storage.ConfigurationManager;
-import net.syamn.utils.LogUtil;
 import org.bukkit.block.Block;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.BlockBreakEvent;
 import org.bukkit.event.inventory.FurnaceExtractEvent;
-
-import java.util.Locale;
 
 public class BlockListener implements Listener {
     private ExpManager plugin;
