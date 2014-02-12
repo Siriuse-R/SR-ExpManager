@@ -27,8 +27,6 @@ public class BlockListener implements Listener {
         final Player player = event.getPlayer();
         final Block block = event.getBlock();
 
-        if (config.isDebug()) LogUtil.info(block.getType().toString());
-
         int dropExp = config.getEntitySection().getInt(block.getType().toString(), -1);
         if (dropExp == -1) {
             dropExp = event.getExpToDrop();
@@ -40,6 +38,8 @@ public class BlockListener implements Listener {
         } else {
             event.setExpToDrop(dropExp);
         }
+
+        ExpManager.Debug(block.getType().toString());
     }
 
     @EventHandler

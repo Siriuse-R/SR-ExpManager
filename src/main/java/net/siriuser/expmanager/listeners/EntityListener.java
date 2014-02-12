@@ -24,8 +24,6 @@ public class EntityListener implements Listener {
     public void EntityDeathEvent (final EntityDeathEvent event) {
         final LivingEntity entity = event.getEntity();
 
-        if (config.isDebug()) LogUtil.info(entity.getType().toString());
-
         int dropExp = config.getEntitySection().getInt(entity.getType().toString(), -1);
         if (dropExp == -1) {
             dropExp = event.getDroppedExp();
@@ -55,5 +53,7 @@ public class EntityListener implements Listener {
         } else {
             event.setDroppedExp(dropExp);
         }
+
+        ExpManager.Debug(entity.getType().toString());
     }
 }

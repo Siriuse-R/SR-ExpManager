@@ -59,4 +59,10 @@ public class ExpManager extends JavaPlugin {
     public static ExpManager getInstance() {
         return instance;
     }
+
+    public static void Debug(String debugStr) {
+        if (Helper.getInstance().getConfig().isDebug()) {
+            LogUtil.info("[DEBUG] " + debugStr);
+        }
+    }
 }
