@@ -1,9 +1,8 @@
 name: SR-ExpManager
 version: version-number-unknown
-description: SR-ExpManager
+description: ExpManagementPlugin.
 authors: [SiriuseR]
-softdepend: [SR-CoreLib]
 website: http://www.siriuser.net/
-main: net.siriuser.SRExpManager.SRExpManager
+main: net.siriuser.expmanager.ExpManager
 commands:
 permissions:

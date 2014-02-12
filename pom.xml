@@ -1,39 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.siriuser</groupId>
-    <artifactId>SR-ExpManager</artifactId>
-    <name>SR-ExpManager</name>
-    <description>Minecraft Bukkiit Plugin.
-Exp Manager Plugin.</description>
 
-    <!-- Properties -->
+    <groupId>net.siriuser</groupId>
+    <artifactId>expmanager</artifactId>
+    <name>SR-ExpManager</name>
+    <description>Minecraft Bukkit Plugin.</description>
+    <version>2.0.1-SNAPSHOT</version>
+    <url>http://www.siriuser.net/</url>
+
+    <!-- Properties
+    **************************************** -->
     <properties>
-      <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-      <project.build.number>UNKNOWN</project.build.number>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.build.number>UNKNOWN</project.build.number>
     </properties>
 
-    <!-- Developer -->
+    <!-- License
+    **************************************** -->
+    <licenses>
+        <license>
+            <name>GNU General Public License 3.0</name>
+            <url>LICENSE</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <!-- Developer
+    **************************************** -->
     <developers>
         <developer>
             <id>SiriuseR</id>
             <name>SiriuseR</name>
             <email>admin@dejiplus.net</email>
             <url>http://www.siriuser.net/</url>
-            <organization>dejiplusServer</organization>
-            <organizationUrl>http://www.dejiplus.net/</organizationUrl>
         </developer>
     </developers>
 
-    <!-- License -->
-    <licenses>
-        <license>
-            <name>GNU General Public License 3.0</name>
-            <url>LICENSE.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
-    <!-- SCM -->
+    <!-- SCM
+    **************************************** -->
     <scm>
         <connection>scm:git:git://github.com/Siriuse-R/SR-ExpManager.git</connection>
         <url>https://github.com/Siriuse-R/SR-ExpManager.git</url>
@@ -41,13 +46,15 @@ Exp Manager Plugin.</description>
         <developerConnection>scm:git:git@github.com:Siriuse-R/SR-ExpManager.git</developerConnection>
     </scm>
 
-    <!-- CI -->
+    <!-- CI
+    **************************************** -->
     <ciManagement>
         <system>jenkins</system>
-        <url>http://ci.siriuser.net/</url>
+        <url>http://ci.dejiplus.net/</url>
     </ciManagement>
 
-    <!-- Build -->
+    <!-- Build
+    **************************************** -->
     <build>
         <finalName>${project.name}</finalName>
         <sourceDirectory>${basedir}/src/main/java/</sourceDirectory>
@@ -93,6 +100,7 @@ Exp Manager Plugin.</description>
                     </execution>
                 </executions>
             </plugin>
+
             <!-- Maven Site -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -104,6 +112,7 @@ Exp Manager Plugin.</description>
                     <outputEncoding>UTF-8</outputEncoding>
                 </configuration>
             </plugin>
+
             <!-- JavaDoc -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -119,6 +128,7 @@ Exp Manager Plugin.</description>
                     </execution>
                 </executions>
             </plugin>
+
             <!--  Compiler -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -137,41 +147,31 @@ Exp Manager Plugin.</description>
                 <version>1.6</version>
                 <executions>
                     <execution>
-                          <phase>package</phase>
-                          <goals>
-                              <goal>shade</goal>
-                          </goals>
-                          <configuration>
-                              <minimizeJar>true</minimizeJar>
-                              <filters>
-                                  <filter>
-                                      <artifact>net.syamn:SakuraLib</artifact>
-                                      <includes><include>**</include></includes>
-                                  </filter>
-                              </filters>
-                              <relocations>
-                                  <relocation>
-                                      <pattern>net.syamn.utils</pattern>
-                                      <shadedPattern>net.syamn.utils</shadedPattern>
-                                  </relocation>
-                              </relocations>
-                          </configuration>
-                      </execution>
+                        <phase>package</phase>
+                        <goals>
+                            <goal>shade</goal>
+                        </goals>
+                        <configuration>
+                            <minimizeJar>true</minimizeJar>
+                            <filters>
+                                <filter>
+                                    <artifact>**</artifact>
+                                    <includes><include>**</include></includes>
+                                </filter>
+                            </filters>
+                            <relocations>
+                                <relocation>
+                                    <pattern>**</pattern>
+                                    <shadedPattern>**</shadedPattern>
+                                </relocation>
+                            </relocations>
+                        </configuration>
+                    </execution>
                 </executions>
-            </plugin>
-
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-resources-plugin</artifactId>
-                <version>2.6</version>
-                <configuration>
-                    <encoding>SJIS</encoding>
-                </configuration>
             </plugin>
         </plugins>
 
         <!-- Resources -->
-        
         <resources>
             <resource>
                 <targetPath>.</targetPath>
@@ -219,76 +219,62 @@ Exp Manager Plugin.</description>
                     </reportSet>
                 </reportSets>
             </plugin>
-      </plugins>
-  </reporting>
+        </plugins>
+    </reporting>
 
-  <!-- Repositories -->
-  <repositories>
-      <!-- Bukkit -->
-      <repository>
-          <id>Bukkit Official</id>
-          <url>http://repo.bukkit.org/content/groups/public/</url>
-      </repository>
-      <!-- SiriuseR -->
-      <repository>
-          <id>SiriuseR Repository</id>
-          <url>http://ci.siriuser.net/plugin/repository/everything/</url>
-      </repository>
-      <!-- Sakura Server -->
-      <repository>
-        <id>Sakura Server</id>
-        <url>http://ci.sakura-server.net/plugin/repository/everything/</url>
-      </repository>
-  </repositories>
+    <!-- Repositories
+    **************************************** -->
+    <repositories>
+        <!-- Bukkit -->
+        <repository>
+            <id>Bukkit Official</id>
+            <url>http://repo.bukkit.org/content/groups/public/</url>
+        </repository>
+        <!-- Sakura -->
+        <repository>
+            <id>Sakura Server</id>
+            <url>http://ci.sakura-server.net/plugin/repository/everything/</url>
+        </repository>
+    </repositories>
 
-  <!-- Dependencies -->
-  <dependencies>
-      <!-- Bukkit Dependency -->
-      <dependency>
-          <groupId>org.bukkit</groupId>
-          <artifactId>bukkit</artifactId>
-          <version>1.6.2-R0.1-SNAPSHOT</version>
-          <scope>provided</scope>
-      </dependency>
+    <!-- Dependencies
+    **************************************** -->
+    <dependencies>
+        <!-- Bukkit Dependency -->
+        <dependency>
+            <groupId>org.bukkit</groupId>
+            <artifactId>bukkit</artifactId>
+            <version>1.7.2-R0.3-SNAPSHOT</version>
+            <scope>provided</scope>
+        </dependency>
+        <!-- SakuraLib Dependency -->
+        <dependency>
+            <groupId>net.syamn</groupId>
+            <artifactId>SakuraLib</artifactId>
+            <version>1.6.2-0.1</version>
+        </dependency>
 
-      <!-- SR-CoreLib Dependency -->
-      <dependency>
-          <groupId>net.siriuser</groupId>
-          <artifactId>SR-CoreLib</artifactId>
-          <version>0.0.1-SNAPSHOT</version>
-          <scope>provided</scope>
-      </dependency>
+        <!-- Test Depends -->
+        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.11</version>
+            <scope>test</scope>
+        </dependency>
+    </dependencies>
 
-      <!-- SakuraUtils Dependency -->
-      <dependency>
-          <groupId>net.syamn</groupId>
-          <artifactId>SakuraLib</artifactId>
-          <version>1.6.1-0.1</version>
-      </dependency>
-
-      <!-- Test Depends -->
-      <dependency>
-          <groupId>junit</groupId>
-          <artifactId>junit</artifactId>
-          <version>4.11</version>
-          <scope>test</scope>
-      </dependency>
-  </dependencies>
-
-  <!-- Profiles -->
-  <profiles>
-      <profile>
-          <id>jenkins</id>
-          <activation>
-              <property>
-                  <name>env.BUILD_NUMBER</name>
-              </property>
-          </activation>
-          <properties>
-              <project.build.number>${env.BUILD_NUMBER}</project.build.number>
-          </properties>
-      </profile>
-  </profiles>
-  <url>http://siriuser.net/</url>
-  <version>1.1.0-SNAPSHOT</version>
+    <!-- Profiles -->
+    <profiles>
+        <profile>
+            <id>jenkins</id>
+            <activation>
+                <property>
+                    <name>env.BUILD_NUMBER</name>
+                </property>
+            </activation>
+            <properties>
+                <project.build.number>${env.BUILD_NUMBER}</project.build.number>
+            </properties>
+        </profile>
+    </profiles>
 </project>

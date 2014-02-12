@@ -1,17 +1,15 @@
-#this file is SJIS
-CreativeModeExp: true
-UseExpMessage: true
+#>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+#   ExpManager ConfigFile!
+#   Author SiriuseR(dejiplus)
+#   License GPLv3
+#<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<
 
-DirectGiveExp:
-    Entity: true
-    Block: true
-    Furnace: true
+#>>>>>>>>>>>>>>>>>>#
+#   Debug Config   #
+#<<<<<<<<<<<<<<<<<<#
+Debug: false
 
-
-Message:
-    Entity: "&a[Exp] &2%Entity%&e‚ð“|‚µ%Exp%ŒoŒ±’l‚ðŠl“¾B"
-    EntityWolf: "&b(˜Tƒ{[ƒiƒX: +5)"
-    Block: "&a[Exp] &2%Block%&e‚ð”j‰ó‚µ%Exp%ŒoŒ±’l‚ðŠl“¾B"
-    Furnace: "&a[Exp] &e‚©‚Ü‚Ç‚©‚ç%Exp%ŒoŒ±’l‚ðŠl“¾B"
-
-ConfigVersion: 1
+#>>>>>>>>>>>>>>>>>>#
+#   DO NOT TOUCH   #
+#<<<<<<<<<<<<<<<<<<#
+ConfigVersion: 2
