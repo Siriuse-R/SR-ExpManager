@@ -24,6 +24,8 @@ public class ExpManager extends JavaPlugin {
         worker.setMainPlugin(this);
 
         PluginManager pm = getServer().getPluginManager();
+        pm.registerEvents(new BlockListener(this), this);
+        pm.registerEvents(new EntityListener(this), this);
 
         PluginDescriptionFile pdfFile = this.getDescription();
         LogUtil.info(pdfFile.getName() + " version " + pdfFile.getVersion() + " is enabled!");
