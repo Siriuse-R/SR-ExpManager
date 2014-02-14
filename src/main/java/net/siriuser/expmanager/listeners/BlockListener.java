@@ -29,7 +29,7 @@ public class BlockListener implements Listener {
             return;
         }
 
-        int dropExp = config.getBlockSection().getInt(block.getType().toString(), -1);
+        int dropExp = config.getBlockExp(block.getType());
         if (dropExp == -1) {
             dropExp = event.getExpToDrop();
         }

@@ -23,7 +23,7 @@ public class EntityListener implements Listener {
     public void EntityDeathEvent (final EntityDeathEvent event) {
         final LivingEntity entity = event.getEntity();
 
-        int dropExp = config.getEntitySection().getInt(entity.getType().toString(), -1);
+        int dropExp = config.getEntityExp(entity);
         if (dropExp == -1) {
             dropExp = event.getDroppedExp();
         }

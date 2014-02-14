@@ -3,8 +3,10 @@ package net.siriuser.expmanager.storage;
 import net.siriuser.expmanager.ExpManager;
 import net.syamn.utils.LogUtil;
 import net.syamn.utils.file.FileStructure;
+import org.bukkit.Material;
 import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.file.FileConfiguration;
+import org.bukkit.entity.Entity;
 
 import java.io.File;
 
@@ -61,12 +63,12 @@ public class ConfigurationManager {
         return config.getBoolean("DirectExp", true);
     }
 
-    public ConfigurationSection getBlockSection() {
-        return config.getConfigurationSection("Block");
+    public int getBlockExp(Material material) {
+        return config.getInt("Block." + material.name(), -1);
     }
 
-    public ConfigurationSection getEntitySection() {
-        return config.getConfigurationSection("Entity");
+    public int getEntityExp(Entity entity) {
+        return config.getInt("Entity" + entity.getType().toString(), -1);
     }
 
     /**
