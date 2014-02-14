@@ -53,6 +53,6 @@ public class EntityListener implements Listener {
             event.setDroppedExp(dropExp);
         }
 
-        ExpManager.Debug(entity.getType().toString());
+        ExpManager.Debug("Entity: " + entity.getType().toString());
     }
 }

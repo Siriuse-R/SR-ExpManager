@@ -42,7 +42,7 @@ public class BlockListener implements Listener {
         }
 
 
-        ExpManager.Debug(block.getType().name());
+        ExpManager.Debug("BlockName: " + block.getType().name());
     }
 
     @EventHandler
