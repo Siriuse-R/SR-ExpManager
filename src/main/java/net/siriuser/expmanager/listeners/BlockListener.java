@@ -4,6 +4,7 @@ import net.siriuser.expmanager.ExpManager;
 import net.siriuser.expmanager.Helper;
 import net.siriuser.expmanager.storage.ConfigurationManager;
 import org.bukkit.block.Block;
+import org.bukkit.enchantments.Enchantment;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -23,6 +24,10 @@ public class BlockListener implements Listener {
     public void onBlockBreakEvent (final BlockBreakEvent event) {
         final Player player = event.getPlayer();
         final Block block = event.getBlock();
+
+        if (player.getItemInHand().containsEnchantment(Enchantment.SILK_TOUCH)) {
+            return;
+        }
 
         int dropExp = config.getBlockSection().getInt(block.getType().toString(), -1);
         if (dropExp == -1) {
